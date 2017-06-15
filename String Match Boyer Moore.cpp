@@ -59,20 +59,21 @@ void BMSearch( string word,  string lines, int lineno,int pgno,int &flag)
         
         //if found, j will be -1
         if (j ==-1)
-        {
-            cout<<"Page "<<pgno<<" Line "<<lineno<<endl;
-            flag=1;
+        {//check if it's an independent word
+		if((shift == 0 && lines[shift + m] == ' ') || (shift == n-m && lines[shift - 1] == ' ')||(lines[shift - 1] == ' ' && lines[shift + m] == ' '))
+            {cout<<"Page "<<pgno<<" Line "<<lineno<<endl;
+            flag=1;}
  
            //shift:
             if(shift<n-m)
-			shift += m-parray[lines[shift+m]] ;
+			shift += m-parray[toascii(lines[shift+m])] ;
 			else
 			shift++;
         }
  		//if match not found:
         else{
-		   if(j>parray[lines[shift+j]])
-		   shift+=j-parray[lines[shift+j]];
+		   if(j>parray[toascii(lines[shift+j])])
+		   shift+=j-parray[toascii(lines[shift+j])];
 		   else
 		   shift++;
 		}
