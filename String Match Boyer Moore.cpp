@@ -61,7 +61,7 @@ void BMSearch( string word,  string lines, int lineno,int pgno,int &flag)
         if (j ==-1)
         {//check if it's an independent word
 		if((shift == 0 && lines[shift + m] == ' ') || (shift == n-m && lines[shift - 1] == ' ')||(lines[shift - 1] == ' ' && lines[shift + m] == ' '))
-            {cout<<"Page "<<pgno<<" Line "<<lineno<<endl;
+            {cout<<"Page "<<pgno<<", line "<<lineno<<endl;
             flag=1;}
  
            //shift:
@@ -103,6 +103,8 @@ int main(){
 		}
 		if(flag==0)
 		cout<<"None"<<endl;
+		
+		cout<<endl;
 		}
 	queries.close();
 	return 0;
